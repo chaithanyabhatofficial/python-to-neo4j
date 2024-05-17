@@ -1,0 +1,4 @@
+# will be uncommented in live project
+# .env
+# .gitignore
+__pycache__/
