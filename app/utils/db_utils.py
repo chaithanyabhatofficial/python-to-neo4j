@@ -87,9 +87,11 @@ def execute_neo4j_query(query):
     query_status = False
     print("Function : Run and commit Neo4j query [execute_neo4j_query]")
     try:
-        result = graph.run(query)
-        print(result)
-        query_status = result != None
+        graph.run(query)
+        query_status = True
+        # result = graph.run(query)
+        # print(result)
+        # query_status = result != None
     except Exception as e:
         print("[execute_neo4j_query] Error while executing neo4j query : " + str(e))
     return query_status
@@ -115,6 +117,8 @@ def read_json_file_and_add_data_to_neo4j_db():
                 # adding both query to make single query
                 query = node_creation_query + '\n' + nodes_relation_query
                 # executing ne04j query
-                print(query)
+                print("Summed up query : \n" + query + str('\n'))
                 query_status = execute_neo4j_query(query)
                 print("Query ran successfully : " + str(query_status))
+    else:
+        print("Error missing key value in JSON file.")
